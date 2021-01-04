@@ -1,0 +1,18 @@
+footer {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100vw;
+  bottom: 0;
+  background-color: #696868;
+  padding: 10px 5px;
+  color: white;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 17px; }
+  footer p {
+    margin-right: 20px; }
+  footer li {
+    list-style: none; }
+    footer li a {
+      text-decoration: none;
+      color: white; }
