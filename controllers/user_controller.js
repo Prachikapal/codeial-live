@@ -50,5 +50,10 @@ module.exports.createUser = function (req, res) {
 
 //sign in create a session
 module.exports.createSession = function (req, res) {
-  return res.redirect("/users/profile");
+  return res.redirect("/");
+};
+
+module.exports.destroySession = function (req, res) {
+  req.logout();
+  return res.redirect("/");
 };

@@ -7,6 +7,7 @@ const router = express.Router();
 router.get("/profile", passport.checkAuthentication, userController.profile);
 router.get("/signup", userController.signup);
 router.get("/signin", userController.signin);
+router.get("/signout", userController.destroySession);
 
 router.post("/create-user", userController.createUser);
 
