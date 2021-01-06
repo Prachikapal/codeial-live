@@ -1,1 +1,19 @@
 <h1>Welcome To The Codeial Live/Home</h1>
+<% if (locals.user) { %>
+    <form action="/post/create" method="POST">
+        <textarea rows="3" cols="30" name="content" placeholder="Type Here..."></textarea>
+        <input type="submit" value="POST">
+    </form>
+    <% } %>
+        <div id="post-list-container">
+            <ul>
+                <% for (let i of posts_list) { %>
+                    <li>
+                        <%= i.content %>
+                    </li>
+                    <li>
+                        <%= i.user.name %>
+                    </li>
+                    <% } %>
+            </ul>
+        </div>
