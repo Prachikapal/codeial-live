@@ -13,3 +13,12 @@
                         <% } %>
             </ul>
         </div>
+        <% if(locals.user) { %>
+            <section id="friend-list"></section>
+            <h4>Friends</h4>
+            <% for(u of users_list) { %>
+                <a href="/users/profile/<%= u._id %>">
+                    <%= u.name %>
+                </a><br>
+                <% } %>
+                    <% } %>

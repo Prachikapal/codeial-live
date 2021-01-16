@@ -4,7 +4,13 @@ const passport = require("passport");
 
 const router = express.Router();
 
-router.get("/profile", passport.checkAuthentication, userController.profile);
+router.get(
+  "/profile/:id",
+  passport.checkAuthentication,
+  userController.profile
+);
+
+router.post("/update/:id", passport.checkAuthentication, userController.update);
 router.get("/signup", userController.signup);
 router.get("/signin", userController.signin);
 router.get("/signout", userController.destroySession);

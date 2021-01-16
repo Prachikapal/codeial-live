@@ -1,9 +1,32 @@
 const User = require("../models/user");
 
 module.exports.profile = function (req, res) {
-  return res.render("user_profile", {
-    title: "Profile",
+  User.findById(req.params.id, function (err, profile) {
+    if (err) {
+      console.log("Error in finding the Profile");
+      return;
+    } else {
+      return res.render("user_profile", {
+        title: "Profile",
+        profile_user: profile,
+      });
+    }
   });
+};
+
+module.exports.update = function (req, res) {
+  if (req.user.id == req.params.id) {
+    User.findByIdAndUpdate(req.params.id, req.body, function (err, user) {
+      if (err) {
+        console.log("Error in updating the Profile");
+        return;
+      } else {
+        return res.redirect("back");
+      }
+    });
+  } else {
+    return res.status(401).send("Unauthorized");
+  }
 };
 
 module.exports.signup = function (req, res) {
