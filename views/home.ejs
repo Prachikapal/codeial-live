@@ -1,20 +1,23 @@
-<h1>Welcome To The Codeial Live/Home</h1>
-<% if (locals.user) { %>
-    <form action="/post/create" method="POST">
-        <textarea rows="3" cols="30" name="content" placeholder="Type Here..." required></textarea>
-        <input type="submit" value="POST">
-    </form>
-    <% } %>
-        <div id="post-list-container">
-            <ul>
+<link rel="stylesheet" href="/css/home.scss">
+<div id="home-container">
+    <section id="feed-posts">
+        <% if (locals.user) { %>
+            <form action="/post/create" method="POST">
+                <textarea rows="3" cols="30" name="content" placeholder="Type Here..." required></textarea>
+                <input type="submit" value="POST">
+            </form>
+            <% } %>
+                <div id="post-list-container">
+                    <ul>
 
-                <% for (post of posts_list) { %>
-                    <%- include("_post") -%>
-                        <% } %>
-            </ul>
-        </div>
-        <% if(locals.user) { %>
-            <section id="friend-list"></section>
+                        <% for (post of posts_list) { %>
+                            <%- include("_post") -%>
+                                <% } %>
+                    </ul>
+                </div>
+    </section>
+    <% if(locals.user) { %>
+        <section id="user-friends">
             <h4>Friends</h4>
             <% for(u of users_list) { %>
                 <a href="/users/profile/<%= u._id %>">
@@ -22,3 +25,5 @@
                 </a><br>
                 <% } %>
                     <% } %>
+        </section>
+</div>
